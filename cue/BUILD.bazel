@@ -35,6 +35,14 @@ config_setting(
 )
 
 config_setting(
+    name = "darwin_aarch64",
+    constraint_values = [
+        "@platforms//os:macos",
+        "@platforms//cpu:aarch64",
+    ],
+)
+
+config_setting(
     name = "windows_x86_64",
     constraint_values = [
         "@platforms//os:windows",
@@ -58,6 +66,7 @@ genrule(
         "//cue:windows_x86_64": ["@cue_runtime_windows_x86_64//:cue"],
         "//cue:linux_arm64": ["@cue_runtime_linux_arm64//:cue"],
         "//cue:darwin_arm64": ["@cue_runtime_darwin_arm64//:cue"],
+        "//cue:darwin_aarch64": ["@cue_runtime_darwin_arm64//:cue"],
         "//cue:windows_arm64": ["@cue_runtime_windows_arm64//:cue"],
     }),
     outs = ["bin/cue"],
